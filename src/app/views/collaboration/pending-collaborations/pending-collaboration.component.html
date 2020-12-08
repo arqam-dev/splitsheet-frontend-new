@@ -1,0 +1,71 @@
+<div class="container p-0">
+  <div class="row">
+    <div class="col-md-7 col-xl-12">
+      <div class="tab-content">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">
+              <mat-icon>security</mat-icon>&nbsp;&nbsp;&nbsp;PENDING COLLABORATIONS
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <mat-form-field appearance="fill" class="col-md-4">
+                <mat-label>Show Pending Collaborations</mat-label>
+                <mat-select matInput>
+                  <mat-option value="">
+                    10
+                  </mat-option>
+                  <mat-option value="">
+                    25
+                  </mat-option>
+                  <mat-option value="">
+                    50
+                  </mat-option>
+                  <mat-option value="">
+                    100
+                  </mat-option>
+                </mat-select>
+                <mat-error>
+                  <!-- Facebook Url is required -->
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Project Name</th>
+                  <th>Initial Date</th>
+                  <th>Due Date</th>
+                  <th>Progress</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let obj of userObj'>
+                  <td>{{obj.name}}</td>
+                  <td>{{obj.started_at}}</td>
+                  <td>{{obj.ended_at}}</td>
+                  <td>{{obj.progress}}%</td>
+                  <td>
+                    <button (click)='acceptCollaboration(obj.id)' class="btn btn-success">Accept</button>
+                    <button (click)='rejectCollaboration(obj.id)' class="btn btn-danger">Reject</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header">
+    <strong>Add Role</strong> Form
+  </div>
+  <div class="card-body">
+
+    <form name="createRoleForm" [formGroup]="createRoleForm" (ngSubmit)="onClickSubmit(createRoleForm.value)"
+      novalidate>
+      <div class="form-group">
+        <mat-form-field appearance="fill" style="padding-left: 1%; width: 100% !important;">
+          <mat-label>Enter Name</mat-label>
+          <input matInput formControlName="name">
+          <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+          <mat-error>
+            Name is required
+          </mat-error>
+      </mat-form-field>
+        <!-- <label for="nf-name">Name</label>
+        <input type="text" formControlName="name" class="form-control" placeholder="Enter Name" autocomplete="Name">
+        <span class="help-block">Please enter your Name</span> -->
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill" style="padding-left: 1%; width: 100% !important;">
+          <mat-label>Enter Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+          <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+          <mat-error>
+             Description is required
+          </mat-error>
+      </mat-form-field>
+        <!-- <label for="nf-description">Description</label>
+
+        <textarea formControlName="description" class="form-control" placeholder="Enter Description"
+          autocomplete="Description"></textarea>
+        <span class="help-block">Please enter Description</span> -->
+      </div>
+
+      <div class="card-footer">
+        <button class="btn btn-sm btn-primary"> Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

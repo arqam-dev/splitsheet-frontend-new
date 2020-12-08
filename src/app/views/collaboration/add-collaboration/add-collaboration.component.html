@@ -1,0 +1,43 @@
+<div class="container p-0">
+  <div class="row">
+    <div class="col-md-7 col-xl-12">
+      <div class="tab-content">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">
+              <mat-icon>security</mat-icon>&nbsp;&nbsp;&nbsp;ADD NEW COLLABORATION
+            </h5>
+          </div>
+
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+              <mat-form-field appearance="fill" style="display: block;">
+                <mat-label>Name</mat-label>
+                <input matInput name="name" ngModel required #name="ngModel">
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" style="display: block;">
+                <mat-label>start Date</mat-label>
+                <input matInput type="date" name="started_at" placeholder="Start Date" ngModel required
+                  #started_at="ngModel">
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" style="display: block;">
+                <mat-label>End Date</mat-label>
+                <input matInput type="date" name="ended_at" placeholder="End Date" ngModel required
+                  #ended_at="ngModel">
+              </mat-form-field>
+
+              <div class="row" style="margin-left: 40%;">
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary " [disabled]='!f.valid'>Add</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

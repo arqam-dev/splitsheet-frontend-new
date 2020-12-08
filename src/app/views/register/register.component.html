@@ -1,0 +1,57 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form name="registrationForm" [formGroup]="registrationForm"
+                (ngSubmit)="onClickSubmit(registrationForm.value);">
+                <h4 style="margin-left: 30%;">Create Your Account</h4>
+
+                <mat-form-field appearance="fill" style="display: block;">
+                  <mat-label>User Name</mat-label>
+                  <input matInput type="text" formControlName="userName" autocomplete="username"
+                    [ngClass]="{'is-invalid' : submitted && f.userName.errors}">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" style="display: block;bottom: 0.25em;">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="text" formControlName="email" autocomplete="email"
+                    [ngClass]="{'is-invalid' : submitted && f.email.errors}" required>
+                </mat-form-field>
+
+                <!-- <mat-form-field appearance="fill" style="display: block;bottom: 0.25em;">
+                  <mat-label>Phone</mat-label>
+                  <input matInput type="tel" formControlName="phoneNo" placeholder="+923001234567" p
+                    attern="^((\\+92-?)|0)?[0-9]{10}$" [ngClass]="{'is-invalid' : submitted && f.phoneNo.errors}"
+                    autocomplete="" required>
+                </mat-form-field> -->
+
+                <mat-form-field appearance="fill" style="display: inline-block;">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" formControlName="password" placeholder="Password"
+                    autocomplete="new-password" [ngClass]="{'is-invalid' : submitted && f.password.errors}" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" style="display: inline-block;">
+                  <mat-label>Repeat password</mat-label>
+                  <input matInput type="password" formControlName="confirmPassword" autocomplete="new-password"
+                    [ngClass]="{'is-invalid' : submitted && f.confirmPassword.errors}" required>
+                </mat-form-field>
+
+                <button class="btn btn-block btn-success">Create Account</button>
+              </form>
+
+              <div class="row mt-3">
+                <div class="col-12">
+                  <button style="float: right;" type="button" class="btn btn-link " routerLink='/login'>Already have an account?</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

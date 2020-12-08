@@ -1,0 +1,35 @@
+<div class="container p-0">
+  <div class="row">
+    <div class="col-md-7 col-xl-12">
+      <div class="tab-content">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">
+              <mat-icon>security</mat-icon>&nbsp;&nbsp;&nbsp;Invite
+            </h5>
+          </div>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+              <mat-form-field appearance="fill" style="display: block;">
+                <mat-label>Eamil</mat-label>
+                <input matInput name="email" ngModel required #email="ngModel">
+              </mat-form-field>
+              <div class="row">
+                <div class="col-3">
+                  <table>
+                    <tr>
+                      <td> <button type="button" (click)="cancel()" class="btn btn-danger">Cancel</button>
+                      </td>
+                      <td> <button type="submit" class="btn btn-primary " [disabled]='!f.valid'>Invite</button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

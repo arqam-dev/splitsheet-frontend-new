@@ -1,0 +1,37 @@
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i> Bordered Table
+    </div>
+
+    <div class="card-body">
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Role Name</th>
+            <th *ngFor="let obj of moduleList">{{obj.name }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let obj of permissionList">
+            <td >{{obj.roleName }}</td>
+            <td *ngFor="let obj2 of obj.PermissionsArr;">
+              <span *ngIf="!obj2.isModel">
+              <input type="checkbox"  [(ngModel)]="obj2.isRead"  (click)="onReadClick(obj2,!obj2.isRead ,obj2.isWrite  );">READ
+              <input type="checkbox" [(ngModel)]="obj2.isWrite" (click)="onReadClick(obj2, obj2.isRead ,!obj2.isWrite  );" /> WRITE
+              </span>
+              <span *ngIf="obj2.isModel">
+                <input type="checkbox"  [(ngModel)]="obj2.isRead"  (click)="onReadClick(obj2,!obj2.isRead ,obj2.isWrite  );">READ 
+                <input type="checkbox"  [(ngModel)]="obj2.isRead"  (click)="onReadClick(obj2,!obj2.isRead ,obj2.isWrite  );">WRITE
+                </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button type="submit" class="btn btn-sm btn-primary" (click) = "onSubmit();"><i class="fa fa-dot-circle-o"></i> Submit</button>
+    </div>
+
+  </div>
+</div>

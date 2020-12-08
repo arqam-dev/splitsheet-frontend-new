@@ -1,0 +1,66 @@
+<div mat-dialog-content>
+
+  <div class="row">
+    <mat-form-field class="fill col-sm-12">
+      <mat-label>Service Name</mat-label>
+      <input matInput [(ngModel)]="data.jobTitle">
+    </mat-form-field>
+  </div>
+
+  <div class = "row">
+    <mat-radio-group style = "margin-left: 2%;" (click) = "radioValue($event);">
+      <mat-radio-button value = "fixPrice"> Fix Price</mat-radio-button>
+      <mat-radio-button value = "perHour"> Per Hour</mat-radio-button>
+      <mat-radio-button value = "perPerson">Per Person</mat-radio-button>
+      <mat-radio-button value = "days">Days</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="row">
+    <mat-form-field class="fill col-sm-12">
+      <mat-label>Description</mat-label>
+      <textarea matInput ></textarea>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="fill col-sm-6">
+      <mat-label>Padding Time (Before)</mat-label>
+      <mat-select matInput>
+        <mat-option value="" disabled>Select Starting Year</mat-option>
+        <mat-option [(ngModel)]="data.startDate"></mat-option>
+      </mat-select>
+
+    </mat-form-field>
+    <mat-form-field class="fill col-sm-6">
+      <mat-label>Padding Time (After)</mat-label>
+      <mat-select matInput>
+        <mat-option value="" disabled>Select Ending Year</mat-option>
+      </mat-select>
+
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="fill col-sm-12">
+      <mat-label>Select Group</mat-label>
+      <mat-select matInput>
+        <mat-option value = "" disabled>Select Group</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  <div class="row">
+    <mat-form-field class="fill col-sm-12">
+      <mat-label>Description</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+
+  </div>
+</div>
+<div mat-dialog-actions>
+  <!-- <div class = "row"> -->
+
+  <button mat-button class="btn btn-square btn-block btn-secondary active" (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.animal" class="btn btn-square btn-block btn-success active"
+    cdkFocusInitial>Update Qualification</button>
+  <!-- </div> -->
+</div>

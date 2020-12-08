@@ -1,0 +1,40 @@
+<div mat-dialog-content>
+
+    <div class="row">
+        <mat-form-field class="fill col-sm-12">
+            <mat-label>Article Title</mat-label>
+            <input matInput [(ngModel)]="data.degree">
+        </mat-form-field>
+        <!-- <mat-form-field class="fill col-sm-6">
+            <mat-label>Issue Date</mat-label>
+            <input matInput [(ngModel)]="data.institute">
+        </mat-form-field> -->
+    </div>
+    
+    <div class="row">
+        <mat-form-field class="fill col-sm-12">
+            <mat-label>Description</mat-label>
+            <textarea matInput></textarea>
+        </mat-form-field>
+
+    </div>
+
+    <div class="row">
+        <mat-form-field class="fill col-sm-12">
+            <mat-label>Category</mat-label>
+            <mat-select matInput>
+                <mat-option value = "">Select Category</mat-option>
+            </mat-select>
+            
+        </mat-form-field>
+
+    </div>
+</div>
+<div mat-dialog-actions>
+    <!-- <div class = "row"> -->
+        
+        <button mat-button class="btn btn-square btn-block btn-secondary active" (click)="onNoClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="data.animal" class="btn btn-square btn-block btn-success active"
+            cdkFocusInitial>Update Qualification</button>
+    <!-- </div> -->
+</div>
