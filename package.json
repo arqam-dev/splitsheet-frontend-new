@@ -21,12 +21,12 @@
     "ng": "ng",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "start": "ng serve --port=4200",
-    "build1": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
-    "build": "ng build --prod",
+    "build": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
+    "build1": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress"
   },
   "private": true,
   "dependencies": {
