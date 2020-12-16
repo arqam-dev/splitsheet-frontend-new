@@ -21,12 +21,12 @@
     "ng": "ng",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "start": "ng serve --port=4200",
-    "build1": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
-    "build": "ng build --prod",
+    "build": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
+    "build1": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress"
   },
   "private": true,
   "dependencies": {
@@ -57,7 +57,7 @@
     "moment": "^2.24.0",
     "mutationobserver-shim": "^0.3.3",
     "ng2-charts": "^2.3.0",
-    "ngx-bootstrap": "^5.2.0",
+    "ngx-bootstrap": "^5.6.2",
     "ngx-perfect-scrollbar": "^8.0.0",
     "ngx-socket-io": "^3.0.1",
     "ngx-spinner": "8.0.0",
