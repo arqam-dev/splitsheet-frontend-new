@@ -1,5 +1,5 @@
 import {AfterViewChecked, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {CollapseDirective} from 'ngx-bootstrap/collapse';
+import {CollapseDirective} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-navbars',

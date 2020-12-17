@@ -26,6 +26,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatRadioModule } from "@angular/material/radio";
 import { InvitationDialog } from "./all-collaborations/invitation-dialog/invitation-dialog.component";
+import { RejectionDialog } from "./pending-collaborations/rejection-dialog/rejection-dialog.component";
 
 import { AppComponent } from "../../app.component";
 
@@ -50,7 +51,7 @@ import { AppComponent } from "../../app.component";
     BsDropdownModule,
     ButtonsModule.forRoot()
   ],
-  declarations: [CollaborationComponent, PendingCollaborationComponent, RejectedCollaborationComponent, AddCollaborationComponent, AcceptedCollaborationComponent, InvitationDialog],
-  entryComponents: [InvitationDialog],
+  declarations: [CollaborationComponent, PendingCollaborationComponent, RejectedCollaborationComponent, AddCollaborationComponent, AcceptedCollaborationComponent, InvitationDialog, RejectionDialog],
+  entryComponents: [InvitationDialog, RejectionDialog],
 })
 export class CollaborationModule { }

@@ -21,40 +21,40 @@ export const navItems: INavData[] = [
   },
   {
     name: "Personal Collabs",
-    icon: "icon-star",
+    icon: "icon-envelope-open",
     children: [
       {
         name: "All Collaborations",
         url: "/collaborations",
-        icon: "icon-puzzle"
+        icon: "icon-drawer"
       },
     ]
   },
   {
     name: "Assigned Collabs",
-    icon: "icon-star",
+    icon: "icon-envelope-open",
     children: [
       {
         name: "New",
         url: "/collaborations/pending-collaborations",
-        icon: "icon-puzzle"
+        icon: "icon-drawer"
       },
       {
         name: "Accepted",
         url: "/collaborations/accepted-collaborations",
-        icon: "icon-puzzle"
+        icon: "icon-drawer"
       },
       {
         name: "Rejected",
         url: "/collaborations/rejected-collaborations",
-        icon: "icon-puzzle"
+        icon: "icon-drawer"
       },
     ]
   },
   {
     name: "Add Collaboration",
     url: "/collaborations/add-collaboration",
-    icon: "icon-puzzle"
+    icon: "icon-plus"
   },
   {
     divider: true

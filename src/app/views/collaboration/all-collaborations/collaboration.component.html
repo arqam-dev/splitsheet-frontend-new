@@ -39,6 +39,9 @@
                   <th>Initial Date</th>
                   <th>Due Date</th>
                   <th>Progress</th>
+                  <th>Total Invites</th>
+                  <th>Accepted Invites</th>
+                  <th>Rejected Invites</th>
                   <th>Invite</th>
                 </tr>
               </thead>
@@ -48,6 +51,9 @@
                   <td>{{obj.started_at}}</td>
                   <td>{{obj.ended_at}}</td>
                   <td>{{obj.progress}}%</td>
+                  <td>{{obj.total_invites}}</td>
+                  <td>{{obj.total_accepted_invites}}</td>
+                  <td>{{obj.total_rejected_invites}}</td>
                   <td><button (click)="invite(obj.id, obj.name)" class="btn btn-success">Invite</button></td>
                 </tr>
 

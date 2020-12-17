@@ -63,10 +63,10 @@ export class CollaborationComponent implements OnInit {
         console.log('then of api');
         this.userObj = res;
         console.log('this.userObj.code::' + this.userObj.code)
-        if (this.userObj.code != 200) {
-          alert('Something went wrong!')
-          return;
-        };
+        // if (this.userObj.code != 200) {
+        //   alert('Something went wrong!')
+        //   return;
+        // };
         this.userObj = this.userObj.data.items;
       })
       .catch((err: HttpErrorResponse) => {

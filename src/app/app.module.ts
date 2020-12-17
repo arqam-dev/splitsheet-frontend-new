@@ -26,7 +26,7 @@ import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
 const _url:string = '';
 const config: SocketIoConfig = {
-  url: 'http//192.168.0.117',
+  url: 'http//192.168.0.106',
   options: {}
 };
 
