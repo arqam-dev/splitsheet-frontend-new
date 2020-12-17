@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   membersArr;
 
   totalCollaborations;
+  totalCollaborationsCount;
   acceptedCollaborations;
   rejectedCollaborations;
 
@@ -34,14 +35,21 @@ export class DashboardComponent implements OnInit {
       .then(res => {
         console.log('then of dashboard api');
         this.totalCollaborations = new Array(res);
+        console.log(this.totalCollaborations)
 
-        this.totalCollaborations = this.totalCollaborations[0].data.items[0].totalCollaborations;
+        this.totalCollaborationsCount = this.totalCollaborations[0].data.items[0].totalCollaborations;
         this.acceptedCollaborations = this.totalCollaborations[0].data.items[0].acceptedCollaborations;
         this.rejectedCollaborations = this.totalCollaborations[0].data.items[0].rejectedCollaborations;
+
+        console.log('this.rejectedCollaborations');
+        console.log(this.rejectedCollaborations);
+        if(this.totalCollaborationsCount == undefined) this.totalCollaborationsCount = 0;
+        if(this.acceptedCollaborations == undefined) this.acceptedCollaborations = 0;
+        if(this.rejectedCollaborations == undefined) this.rejectedCollaborations = 0;
       })
       .catch((err: HttpErrorResponse) => {
         console.log("error occuer in dashboard");
-        console.log(err.status);
+        console.log(err);
       });
   }
 
@@ -86,6 +94,7 @@ export class DashboardComponent implements OnInit {
       }, 1000);
     });
   }
+
   defaultCollaborationName;
   async ngOnInit() {
     await this.getDashboardItems(this.user_id);

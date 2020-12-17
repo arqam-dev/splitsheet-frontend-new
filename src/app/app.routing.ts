@@ -123,13 +123,13 @@ export const routes: Routes = [
       //       m => m.CustomModuleModule
       //     )
       // },
-      // {
-      //   path: "profile",
-      //   loadChildren: () =>
-      //   import("./views/user-profile/user-profile.module")
-      //   .then(m => m.ProfileModule)
-      //     // import("./views/user-profile/user-profile.module").then(m => m.ProfileModule)
-      // },
+      {
+        path: "profile",
+        loadChildren: () =>
+        import("./views/user-profile/user-profile.module")
+        .then(m => m.ProfileModule)
+          // import("./views/user-profile/user-profile.module").then(m => m.ProfileModule)
+      },
       // {
       //   path: "chats",
       //   loadChildren: () =>

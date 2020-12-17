@@ -48,8 +48,8 @@
               <tbody>
                 <tr *ngFor='let obj of userObj'>
                   <td>{{obj.name}}</td>
-                  <td>{{obj.started_at}}</td>
-                  <td>{{obj.ended_at}}</td>
+                  <td>{{obj.started_at.slice(0,10)}}</td>
+                  <td>{{obj.ended_at.slice(0,10)}}</td>
                   <td>{{obj.progress}}%</td>
                   <td>{{obj.total_invites}}</td>
                   <td>{{obj.total_accepted_invites}}</td>

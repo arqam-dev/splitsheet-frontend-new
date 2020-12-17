@@ -9,19 +9,27 @@
           <div class="row" style="margin-left: 30%;">
             <div class="col-sm-6">
               <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                   <div class="callout callout-info">
-                    <small class="text-muted">Initiated Collaboration</small>
+                    <small class="text-muted">Total Projects</small>
                     <br>
-                    <strong class="h4">{{totalCollaborations}}</strong>
+                    <strong class="h4">{{totalCollaborationsCount}}</strong>
                   </div>
                 </div>
                 <!--/.col-->
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                   <div class="callout callout-danger">
-                    <small class="text-muted">Rejected Collaboration</small>
+                    <small class="text-muted">Rejected Invites</small>
                     <br>
-                    <strong class="h4">5</strong>
+                    <strong class="h4">{{rejectedCollaborations}}</strong>
+                  </div>
+                </div>
+                <!--/.col-->
+                <div class="col-sm-4">
+                  <div class="callout callout-warning">
+                    <small class="text-muted">Pending Invites</small>
+                    <br>
+                    <strong class="h4">{{rejectedCollaborations}}</strong>
                   </div>
                 </div>
                 <!--/.col-->
@@ -31,20 +39,20 @@
               <br><br>
               <div class="progress-group mb-4">
                 <div class="progress-group-prepend">
-                  <span class="progress-group-text">
-                    Total <br /> Accepted <br /> Rejected
+                  <span class="progress-group-text" style="height: 25px; font-size: medium;">
+                    Total Invites <br /> Accepted&nbsp;Invites <br /> Rejected&nbsp;Invites
                   </span>
                 </div>
-                <div class="progress-group-bars">
-                  <div class="progress progress-md">
-                    <div class="progress-bar bg-green" role="progressbar" [style.width]="totalCollaborations + '%'"
+                <div class="progress-group-bars" style="margin-left: 5%;">
+                  <div class="progress progress-md" style="height: 25px;">
+                    <div class="progress-bar bg-green" role="progressbar" [style.width]="totalCollaborationsCount + '%'"
                       aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <div class="progress progress-md">
+                  <div class="progress progress-md" style="height: 25px;">
                     <div class="progress-bar bg-info" role="progressbar" [style.width]="acceptedCollaborations + '%'"
                       aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <div class="progress progress-md">
+                  <div class="progress progress-md" style="height: 25px;">
                     <div class="progress-bar bg-danger" role="progressbar" [style.width]="rejectedCollaborations + '%'"
                       aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -63,7 +71,7 @@
                   <mat-form-field appearance="fill">
                     <mat-label>{{defaultCollaborationName}}</mat-label>
                     <mat-select matInput>
-                      <mat-option (click)='getMembersAgainstCollaboration(obj.id)' value= ""
+                      <mat-option (click)='getMembersAgainstCollaboration(obj.id)' value=""
                         *ngFor='let obj of collaborationsArr'>
                         {{obj.name}}
                       </mat-option>
