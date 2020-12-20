@@ -20,8 +20,8 @@ export class DashboardComponent implements OnInit {
   _url: string = LoopBackConfig.getPath() + "/";
   user_id = localStorage.getItem('userId');
 
-  collaborationsArr;
-  membersArr;
+  collaborationsArr = [];
+  membersArr = [];
 
   totalCollaborations;
   totalCollaborationsCount;
@@ -43,9 +43,9 @@ export class DashboardComponent implements OnInit {
 
         console.log('this.rejectedCollaborations');
         console.log(this.rejectedCollaborations);
-        if(this.totalCollaborationsCount == undefined) this.totalCollaborationsCount = 0;
-        if(this.acceptedCollaborations == undefined) this.acceptedCollaborations = 0;
-        if(this.rejectedCollaborations == undefined) this.rejectedCollaborations = 0;
+        if (this.totalCollaborationsCount == undefined) this.totalCollaborationsCount = 0;
+        if (this.acceptedCollaborations == undefined) this.acceptedCollaborations = 0;
+        if (this.rejectedCollaborations == undefined) this.rejectedCollaborations = 0;
       })
       .catch((err: HttpErrorResponse) => {
         console.log("error occuer in dashboard");
@@ -95,7 +95,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  defaultCollaborationName;
+  defaultCollaborationName = 'No Projects';
   async ngOnInit() {
     await this.getDashboardItems(this.user_id);
     await this.getAllCollaborations(this.user_id);

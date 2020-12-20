@@ -52,6 +52,8 @@ export class CollaborationComponent implements OnInit {
         },
         dialogData: dialogData,
       },
+      // height: '400px',
+      width: '600px',
     });
     dialogRef.afterClosed().subscribe((result) => { });
   }

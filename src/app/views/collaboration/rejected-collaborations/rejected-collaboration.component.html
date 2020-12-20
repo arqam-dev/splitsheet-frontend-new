@@ -41,7 +41,10 @@
                   <th>Reason</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody *ngIf="userObj.length == 0">
+                <h1 style="margin-left: 10%;">No record Found</h1>
+              </tbody>
+              <tbody *ngIf="userObj.length > 0">
                 <tr *ngFor='let obj of userObj'>
                   <td>{{obj.name}}</td>
                   <td>{{obj.started_at.slice(0,10)}}</td>

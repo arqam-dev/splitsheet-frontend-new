@@ -92,7 +92,15 @@
                 <th>Collaboration Progress</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="membersArr.length == 0">
+              <tr style="font-size: xx-large;">
+                <td></td>
+                <td></td>
+                <td style="padding-left: 10%;">No record Found</td>
+                <td></td>
+              </tr>
+            </tbody>
+            <tbody *ngIf="membersArr.length > 0">
               <tr *ngFor='let obj of membersArr'>
                 <td class="text-center">
                   <div class="avatar">
