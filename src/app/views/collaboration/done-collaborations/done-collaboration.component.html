@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-header">
             <h5 class="card-title mb-0">
-              <mat-icon>security</mat-icon>&nbsp;&nbsp;&nbsp;REJECTED PROJECTS
+              <mat-icon>security</mat-icon>&nbsp;&nbsp;&nbsp;Completed PROJECTS
             </h5>
           </div>
           <div class="card-body">
@@ -38,7 +38,6 @@
                   <th>Project Name</th>
                   <th>Initial Date</th>
                   <th>Due Date</th>
-                  <th>Reason</th>
                 </tr>
               </thead>
               <tbody *ngIf="userObj.length == 0">
@@ -49,7 +48,6 @@
                   <td>{{obj.name}}</td>
                   <td>{{obj.started_at.slice(0,10)}}</td>
                   <td>{{obj.ended_at.slice(0,10)}}</td>
-                  <td>{{obj.reason}}</td>
                 </tr>
               </tbody>
             </table>

@@ -42,6 +42,7 @@
                   <th>Total Invites</th>
                   <th>Accepted Invites</th>
                   <th>Rejected Invites</th>
+                  <th>Add Team</th>
                   <th>Invite</th>
                 </tr>
               </thead>
@@ -57,6 +58,7 @@
                   <td>{{obj.total_invites}}</td>
                   <td>{{obj.total_accepted_invites}}</td>
                   <td>{{obj.total_rejected_invites}}</td>
+                  <td><button (click)="addTeam(obj.id, obj.name)" class="btn btn-primary">Add Team</button></td>
                   <td><button (click)="invite(obj.id, obj.name)" class="btn btn-success">Invite</button></td>
                 </tr>
 

@@ -17,7 +17,7 @@ import { HttpHeaders } from "@angular/common/http";
   templateUrl: "invitation-dialog.html",
 })
 export class InvitationDialog implements OnInit {
-  ProductInfoForm: FormGroup;
+  inviteFormBuilder: FormGroup;
 
   _url: string = LoopBackConfig.getPath() + "/v1/";
   access_token = localStorage.getItem("access_token");
@@ -56,9 +56,39 @@ export class InvitationDialog implements OnInit {
     this.dialog.closeAll();
   }
 
-  inviteRes;
+  selectedTeam(team_id) {
+    localStorage.setItem('selected_team_id', team_id);
+  }
 
-  invite(email) {
+  inviteRes;
+  min;
+  max;
+  resObj;
+  teams;
+  getPercentageAndTeam(project_id) {
+    console.log('getPercentageAndTeam called...!');
+
+    let getPercentageAndTeamURL = this._url + `projects/remaining-percentage/?project_id=` + project_id;
+
+    this.http.get(getPercentageAndTeamURL)
+      .toPromise()
+      .then(res => {
+        console.log('then of getPercentageAndTeam api');
+        this.resObj = res;
+
+        console.log(this.resObj);
+        this.resObj = this.resObj.data.items[0];
+        this.teams = this.resObj.teams;
+        this.min = this.resObj.min;
+        this.max = this.resObj.max;
+      })
+      .catch((err: HttpErrorResponse) => {
+        console.log("error occuer");
+        console.log(err.status);
+      });
+  }
+
+  invite(email, percentage) {
     console.log("invite called");
 
     let inviteUrl = this._url + 'users/invite';
@@ -70,11 +100,15 @@ export class InvitationDialog implements OnInit {
     console.log('user_name: ' + user_name);
     console.log('collaboration_name: ' + collaboration_name);
 
+    // email, team_id, project_id, percentage
+
     let data = {
       email: email,
-      collaboration_id: collaboration_id,
+      team_id: localStorage.getItem('selected_team_id'),
+      project_id: collaboration_id,
       user_name: user_name,
-      collaboration_name: collaboration_name
+      project_name: collaboration_name,
+      percentage: percentage
     }
     this.http
       .post(inviteUrl, data)
@@ -105,17 +139,22 @@ export class InvitationDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ProductInfoForm = this._formBuilder.group({
-      quantity: [""],
-      price: [""],
+    this.inviteFormBuilder = this._formBuilder.group({
+      email: ['', Validators.required],
+      percentage: ['', Validators.required],
+      team: ['', Validators.required],
     });
+
+    const collaboration_id = localStorage.getItem('collaboration_id');
+    this.getPercentageAndTeam(collaboration_id);
+
     let productInfoFuncId = localStorage.getItem("productInfoFuncId");
     this.showProductDetailsFunc(productInfoFuncId);
 
   }
 
   onSubmit(inviteObj: NgForm) {
-    this.invite(inviteObj.value.email);
+    this.invite(inviteObj.value.email, inviteObj.value.percentage);
     return;
   }
 }

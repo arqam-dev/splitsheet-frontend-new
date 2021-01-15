@@ -22,7 +22,7 @@
 export class LoopBackConfig {
     // private static path: string = `https://split-sheet.herokuapp.com`;
     // private static path: string = `http://localhost:3000`;
-    private static path: string = `https://split-sheet.herokuapp.com`;
+    private static path: string = `https://split-sheet-backend.herokuapp.com`;
     private static version: string | number = 'api';
     private static authPrefix: string = '';
     private static debug: boolean = true;

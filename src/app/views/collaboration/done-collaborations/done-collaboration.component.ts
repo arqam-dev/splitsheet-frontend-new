@@ -10,13 +10,13 @@ import { Injectable } from '@angular/core';
 import { LoopBackConfig } from '../../service/lb.config';
 
 @Component({
-  templateUrl: 'rejected-collaboration.component.html'
+  templateUrl: 'done-collaboration.component.html'
 })
-export class RejectedCollaborationComponent implements OnInit {
+export class DoneCollaborationComponent implements OnInit {
   userObj = [];
   userObjTemp;
   user_id = localStorage.getItem('userId');
-  status = -1; // for accepted collaborations
+  status = 2; // for accepted collaborations
   _url: string = LoopBackConfig.getPath() + "/";
   collaborationUrl = this._url + `v1/projects/assigned-projects?user_id=` + this.user_id + '&status=' + this.status;
 

@@ -24,14 +24,14 @@ export const navItems: INavData[] = [
     icon: "icon-envelope-open",
     children: [
       {
-        name: "All Collaborations",
+        name: "All Projects",
         url: "/collaborations",
         icon: "icon-drawer"
       },
     ]
   },
   {
-    name: "Assigned Collabs",
+    name: "Assigned Projects",
     icon: "icon-envelope-open",
     children: [
       {
@@ -49,10 +49,15 @@ export const navItems: INavData[] = [
         url: "/collaborations/rejected-collaborations",
         icon: "icon-drawer"
       },
+      {
+        name: "Completed",
+        url: "/collaborations/done-collaborations",
+        icon: "icon-drawer"
+      },
     ]
   },
   {
-    name: "Add Collaboration",
+    name: "Add Project",
     url: "/collaborations/add-collaboration",
     icon: "icon-plus"
   },

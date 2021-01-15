@@ -19,7 +19,7 @@ import { LoopBackConfig } from '../../service/lb.config';
 export class AddCollaborationComponent implements OnInit {
   userObj;
   _url: string = LoopBackConfig.getPath() + "/";
-  collaborationUrl = this._url + `v1/collaborations`;
+  collaborationUrl = this._url + `v1/projects`;
 
   constructor(private http: HttpClient, private router: Router) { }
   ngOnInit() { }
@@ -47,7 +47,7 @@ export class AddCollaborationComponent implements OnInit {
         //   return;
         // };
 
-        alert('Added new collaboration successfully!')
+        alert('Added new Project successfully!')
         this.router.navigate(['/collaborations']);
       })
       .catch((err: HttpErrorResponse) => {

@@ -5,6 +5,7 @@ import { CollaborationComponent } from './all-collaborations/collaboration.compo
 import { PendingCollaborationComponent } from './pending-collaborations/pending-collaboration.component';
 import { AcceptedCollaborationComponent } from './accepted-collaborations/accepted-collaboration.component';
 import { RejectedCollaborationComponent } from './rejected-collaborations/rejected-collaboration.component';
+import { DoneCollaborationComponent } from './done-collaborations/done-collaboration.component';
 import { AddCollaborationComponent } from './add-collaboration/add-collaboration.component';
 
 const routes: Routes = [
@@ -37,10 +38,10 @@ const routes: Routes = [
     }
   },
   {
-    path: 'accepted-collaborations',
-    component: AcceptedCollaborationComponent,
+    path: 'done-collaborations',
+    component: DoneCollaborationComponent,
     data: {
-      title: 'Accepted Collaborations'
+      title: 'Done Collaborations'
     }
   },
   {

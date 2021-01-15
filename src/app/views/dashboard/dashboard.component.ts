@@ -20,6 +20,36 @@ export class DashboardComponent implements OnInit {
   _url: string = LoopBackConfig.getPath() + "/";
   user_id = localStorage.getItem('userId');
 
+  
+  // // // // // 
+
+  // barChart
+  public barChartOptions: any = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public barChartLabels: string[] = ['Total Project', 'Total Invites', 'Accepted', 'Rejected', 'Pending'];
+  public barChartType = 'bar';
+  public barChartLegend = true;
+
+  // public barChartData: any[] = [
+  //   { data: [65, 59, 80, 81], label: 'Project Overview' },
+  // ];
+  public barChartData: any[] = [
+    { data: [65, 59, 80, 81], label: 'Project Overview' },
+  ];
+
+
+  // events
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
+
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
+  // // // // // 
+
   collaborationsArr = [];
   membersArr = [];
 
@@ -27,6 +57,15 @@ export class DashboardComponent implements OnInit {
   totalCollaborationsCount;
   acceptedCollaborations;
   rejectedCollaborations;
+  pandingCollaborations;
+  dashbordRes;
+
+  getChartsData() {
+     this.barChartData = [
+      { data: [65, 59, 80, 81], label: 'Project Overview' },
+      // { data: [28, 48, 40, 19], label: 'Series B' }
+    ];
+  }
 
   getDashboardItems(user_id) {
     let dashboardUrl = this._url + 'v1/users/dashboard/?user_id=' + user_id;
@@ -34,18 +73,31 @@ export class DashboardComponent implements OnInit {
       .toPromise()
       .then(res => {
         console.log('then of dashboard api');
-        this.totalCollaborations = new Array(res);
-        console.log(this.totalCollaborations)
+        console.log(res);
+        this.dashbordRes = res;
+        this.totalCollaborations = this.dashbordRes.data.items[0].total_projects;
+        this.totalCollaborationsCount = this.dashbordRes.data.items[0].total_invites;
+        this.acceptedCollaborations = this.dashbordRes.data.items[0].total_accepted_invites;
+        this.rejectedCollaborations = this.dashbordRes.data.items[0].total_rejected_invites;
+        this.pandingCollaborations = this.dashbordRes.data.items[0].padding_invites;
+        // this.totalCollaborations = new Array(res);
+        // console.log(this.totalCollaborations)
 
-        this.totalCollaborationsCount = this.totalCollaborations[0].data.items[0].totalCollaborations;
-        this.acceptedCollaborations = this.totalCollaborations[0].data.items[0].acceptedCollaborations;
-        this.rejectedCollaborations = this.totalCollaborations[0].data.items[0].rejectedCollaborations;
+        // this.totalCollaborationsCount = this.totalCollaborations[0].data.items[0].totalCollaborations;
+        // this.acceptedCollaborations = this.totalCollaborations[0].data.items[0].acceptedCollaborations;
+        // this.rejectedCollaborations = this.totalCollaborations[0].data.items[0].rejectedCollaborations;
 
-        console.log('this.rejectedCollaborations');
-        console.log(this.rejectedCollaborations);
-        if (this.totalCollaborationsCount == undefined) this.totalCollaborationsCount = 0;
-        if (this.acceptedCollaborations == undefined) this.acceptedCollaborations = 0;
-        if (this.rejectedCollaborations == undefined) this.rejectedCollaborations = 0;
+        // console.log('this.rejectedCollaborations');
+        // console.log(this.rejectedCollaborations);
+        // if (this.totalCollaborationsCount == undefined) this.totalCollaborationsCount = 0;
+        // if (this.acceptedCollaborations == undefined) this.acceptedCollaborations = 0;
+        // if (this.rejectedCollaborations == undefined) this.rejectedCollaborations = 0;
+
+        this.barChartData = [
+          { data: [this.totalCollaborations, this.totalCollaborationsCount, this.acceptedCollaborations, this.rejectedCollaborations, this.pandingCollaborations], label: 'Project Overview' },
+          // { data: [28, 48, 40, 19], label: 'Series B' }
+        ];
+
       })
       .catch((err: HttpErrorResponse) => {
         console.log("error occuer in dashboard");
@@ -54,7 +106,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllCollaborations(user_id) {
-    let collaborationUrl = this._url + 'v1/collaborations/?user_id=' + user_id;
+    let collaborationUrl = this._url + 'v1/projects/?user_id=' + user_id;
     this.http.get(collaborationUrl)
       .toPromise()
       .then(res => {
@@ -68,16 +120,16 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  getMembersAgainstCollaboration(collaboration_id) {
-    let collaborationUrl = this._url + 'v1/collaborations/users-against-collaboration/?collaboration_id=' + collaboration_id;
+  getMembersAgainstCollaboration(project_id) {
+    let projectUrl = this._url + 'v1/team/teams-against-project/?project_id=' + project_id;
 
-    console.log('collaboration_id');
-    console.log(collaboration_id);
+    console.log('project_id');
+    console.log(project_id);
 
-    this.http.get(collaborationUrl)
+    this.http.get(projectUrl)
       .toPromise()
       .then(res => {
-        console.log('then of api');
+        console.log('then of this getMembersAgainstCollaboration api');
         this.membersArr = new Array(res);
         this.membersArr = this.membersArr[0].data.items;
       })
@@ -95,6 +147,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+
   defaultCollaborationName = 'No Projects';
   async ngOnInit() {
     await this.getDashboardItems(this.user_id);
@@ -106,4 +159,5 @@ export class DashboardComponent implements OnInit {
     this.defaultCollaborationName = this.collaborationsArr[0].name;
     this.getMembersAgainstCollaboration(defaultCollaborationId);
   }
+
 }

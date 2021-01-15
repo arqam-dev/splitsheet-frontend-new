@@ -18,7 +18,9 @@ import {
   templateUrl: 'pending-collaboration.component.html'
 })
 export class PendingCollaborationComponent implements OnInit {
-  userObj;
+  userObj = new Array();
+  userObjTemp;
+
   user_id = localStorage.getItem('userId');
   status = 0; // for pending collaborations
   _url: string = LoopBackConfig.getPath() + "/";
@@ -47,18 +49,18 @@ export class PendingCollaborationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let collaborationUrl = this._url + `v1/collaborations/assigned-collaborations?user_id=` + this.user_id + '&status=0';
+    let collaborationUrl = this._url + `v1/projects/assigned-projects?user_id=` + this.user_id + '&status=0';
     this.http.get(collaborationUrl)
       .toPromise()
       .then(res => {
         console.log('then of api');
-        this.userObj = res;
-        console.log('this.userObj.code::' + this.userObj.code)
-        // if (this.userObj.code != 200) {
-        //   alert('Something went wrong!')
-        //   return;
-        // };
-        this.userObj = this.userObj.data.items;
+        console.log(res);
+        this.userObjTemp = res;
+        if (this.userObjTemp != undefined) {
+          // this.userObj = this.userObjTemp;
+          console.log('this.userObj.code::' + this.userObjTemp.code)
+          this.userObj = this.userObjTemp.data.items[0].projects;
+        }
       })
       .catch((err: HttpErrorResponse) => {
         console.log("error occuer");
@@ -71,19 +73,20 @@ export class PendingCollaborationComponent implements OnInit {
 
     let collaborationObj = {
       user_id: this.user_id,
-      collaboration_id: collaboration_id,
-      status: 1
+      project_id: collaboration_id,
+      status: 1,
     }
-    let collaborationUrl = this._url + `v1/collaborations/accept-reject-collaboration?user_id=` + this.user_id + '&status=' + '1';
+    let collaborationUrl = this._url + `v1/projects/accept-reject-project?user_id=` + this.user_id + '&status=' + '1';
 
     this.http.post(collaborationUrl, collaborationObj)
       .toPromise()
       .then(res => {
-        console.log('then of api');
+        console.log('then of api accepted');
+        console.log(res);
         // if (this.userObj.code == 200) {
         alert('Accepted collaboration successfully');
         window.location.reload();
-        return;
+        // return;
         // } 
         // else if (this.userObj.code != 200) {
         //   alert('Something went wrong!')
@@ -100,7 +103,7 @@ export class PendingCollaborationComponent implements OnInit {
     console.log('rejectCollaboration called!');
 
     localStorage.setItem('collaboration_id', collaboration_id);
-    
+
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
