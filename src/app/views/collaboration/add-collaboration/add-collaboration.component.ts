@@ -33,7 +33,9 @@ export class AddCollaborationComponent implements OnInit {
       name: user.value.name,
       started_at: new Date(user.value.started_at),
       ended_at: new Date(user.value.ended_at),
-      user_id: user_id
+      user_id: user_id,
+      description: user.value.description,
+      value: user.value.value
     }
 
     this.http.post(this.collaborationUrl, collaborationObj)

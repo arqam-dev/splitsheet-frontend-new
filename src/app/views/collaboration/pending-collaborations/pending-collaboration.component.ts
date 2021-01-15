@@ -22,7 +22,7 @@ export class PendingCollaborationComponent implements OnInit {
   userObjTemp;
 
   user_id = localStorage.getItem('userId');
-  status = 0; // for pending collaborations
+  status = 0; // for pending Projects
   _url: string = LoopBackConfig.getPath() + "/";
 
   constructor(private http: HttpClient, private router: Router, public dialog: MatDialog) { }

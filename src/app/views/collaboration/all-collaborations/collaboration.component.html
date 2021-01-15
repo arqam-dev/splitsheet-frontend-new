@@ -5,13 +5,13 @@
         <div class="card">
           <div class="card-header">
             <h5 class="card-title mb-0">
-              <mat-icon>security</mat-icon>&nbsp;&nbsp;&nbsp;MY COLLABORATIONS
+              <mat-icon>security</mat-icon>&nbsp;&nbsp;&nbsp;MY Projects
             </h5>
           </div>
           <div class="card-body">
             <div class="form-group">
               <mat-form-field appearance="fill" class="col-md-4">
-                <mat-label>Show Collaborations</mat-label>
+                <mat-label>Show Projects</mat-label>
                 <mat-select matInput>
                   <mat-option value="">
                     10
@@ -36,9 +36,11 @@
               <thead>
                 <tr>
                   <th>Project Name</th>
-                  <th>Initial Date</th>
-                  <th>Due Date</th>
-                  <th>Progress</th>
+                  <th>Description</th>
+                  <th>Initial&nbsp;Date</th>
+                  <th>Due&nbsp;Date</th>
+                  <th>Percentage</th>
+                  <th>Value</th>
                   <th>Total Invites</th>
                   <th>Accepted Invites</th>
                   <th>Rejected Invites</th>
@@ -47,18 +49,20 @@
                 </tr>
               </thead>
               <tbody *ngIf="userObj.length == 0">
-                <h1 style="margin-left: 10%;">No record Found</h1>
+                <h2 style="margin-left: 10%;">No record Found</h2>
               </tbody>
               <tbody *ngIf="userObj.length > 0">
                 <tr *ngFor='let obj of userObj'>
                   <td>{{obj.name}}</td>
+                  <td>{{obj.description}}</td>
                   <td>{{obj.started_at.slice(0,10)}}</td>
                   <td>{{obj.ended_at.slice(0,10)}}</td>
                   <td>{{obj.progress}}%</td>
+                  <td>{{obj.value}}</td>
                   <td>{{obj.total_invites}}</td>
                   <td>{{obj.total_accepted_invites}}</td>
                   <td>{{obj.total_rejected_invites}}</td>
-                  <td><button (click)="addTeam(obj.id, obj.name)" class="btn btn-primary">Add Team</button></td>
+                  <td><button (click)="addTeam(obj.id, obj.name)" class="btn btn-primary">Add</button></td>
                   <td><button (click)="invite(obj.id, obj.name)" class="btn btn-success">Invite</button></td>
                 </tr>
 

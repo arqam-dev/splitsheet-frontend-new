@@ -20,7 +20,7 @@ export const navItems: INavData[] = [
     name: "Project's Management"
   },
   {
-    name: "Personal Collabs",
+    name: "Personal Projects",
     icon: "icon-envelope-open",
     children: [
       {

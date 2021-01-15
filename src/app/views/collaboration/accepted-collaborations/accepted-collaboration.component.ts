@@ -17,7 +17,7 @@ export class AcceptedCollaborationComponent implements OnInit {
   userObjTemp;
 
   user_id = localStorage.getItem('userId');
-  status = 1; // for accepted collaborations
+  status = 1; // for accepted Projects
   _url: string = LoopBackConfig.getPath() + "/";
   collaborationUrl = this._url + `v1/projects/assigned-projects?user_id=` + this.user_id + '&status=' + this.status;
 

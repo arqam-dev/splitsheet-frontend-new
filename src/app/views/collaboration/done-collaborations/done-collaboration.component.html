@@ -5,13 +5,13 @@
         <div class="card">
           <div class="card-header">
             <h5 class="card-title mb-0">
-              <mat-icon>security</mat-icon>&nbsp;&nbsp;&nbsp;Completed PROJECTS
+              <mat-icon>security</mat-icon>&nbsp;&nbsp;&nbsp;COMPLETED PROJECTS
             </h5>
           </div>
           <div class="card-body">
             <div class="form-group">
               <mat-form-field appearance="fill" class="col-md-4">
-                <mat-label>Show Pending Collaborations</mat-label>
+                <mat-label>Show Pending Projects</mat-label>
                 <mat-select matInput>
                   <mat-option value="">
                     10
@@ -41,7 +41,7 @@
                 </tr>
               </thead>
               <tbody *ngIf="userObj.length == 0">
-                <h1 style="margin-left: 10%;">No record Found</h1>
+                <h2 style="margin-left: 10%;">No record Found</h2>
               </tbody>
               <tbody *ngIf="userObj.length > 0">
                 <tr *ngFor='let obj of userObj'>
