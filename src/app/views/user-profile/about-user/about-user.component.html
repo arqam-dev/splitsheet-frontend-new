@@ -18,8 +18,8 @@
         <div class="card-body">
             <div class="wrapper">
                 <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="user-profile">
-                <h3>{{user_name}}</h3>
-                <p>{{email}}</p>
+                <h3 class="text-truncate">{{user_name}}</h3>
+                <p class="text-truncate">{{email}}</p>
             </div>
             <div class="row ">
                 <div class="col-lg-12">
@@ -33,32 +33,37 @@
         <div class="col-lg-12">
             <div class="card">
                 <div *ngFor='let obj of userObj' class="card-body info-card social-about">
-                    <h1 class="text-blue" style="margin-left: 40%;">
+                    <div class="row"> 
+                        <div class="col-xl-10 col-lg-10 col-md-9 col-sm-12 col-xs-12">
+                            <h1 class="text-blue text-truncate" style="text-align: center;">
+                                About <u>{{user_name}}</u>
+                            </h1>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-xs-12">
+                            <button *ngIf='isEdit == true' (click)="isEditFunc()" style="float: right;"
+                            class="btn btn-lg btn-block btn-primary">Edit</button>
+                        <button *ngIf='isEdit == false' (click)="updateProfile()" style="float: right;"
+                            class="btn btn-lg btn-block btn-success">Update</button>
+                        </div>
+                    </div>
+                    <!-- <h1 class="text-blue" style="margin-left: 40%;">
                         About <u>{{user_name}}</u>
                         <button *ngIf='isEdit == true' (click)="isEditFunc()" style="float: right;"
                             class="btn btn-primary">Edit</button>
                         <button *ngIf='isEdit == false' (click)="updateProfile()" style="float: right;"
                             class="btn btn-success">Update</button>
-                    </h1>
+                    </h1> -->
                     <br><br><br>
 
                     <div class="row">
-                        <div class="col-2">
-                            <div>
-                                <!-- <i class="fas fa-user mr-2"></i> -->
-                                <span></span>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center"> 
+                            <div class="social-info">
+                                <p class="text-truncate"><i class="fas fa-user mr-2"></i>Name: {{obj.user_name}}</p>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center"> 
                             <div class="social-info">
-                                <i class="fas fa-user mr-2"></i>
-                                <span>Name: {{obj.user_name}}</span>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="social-info">
-                                <i class="fas fas fa-envelope mr-2"></i>
-                                <span>Email:{{obj.email}}</span>
+                                <p class="text-truncate"><i class="fas fas fa-envelope mr-2"></i>Email:{{obj.email}}</p>
                             </div>
                         </div>
                     </div>

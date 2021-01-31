@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="card">
         <div class="card-header">
           Projects's Overview
@@ -9,14 +9,14 @@
           <div class="row" style="margin-left: 15%;margin-right: 15%;">
             <div class="col-sm-12">
               <div class="row">
-                <div class="col-sm-2">
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <div class="callout callout-info">
                     <small class="text-muted">Total <br> Projects</small>
                     <br>
                     <strong class="h4">{{totalCollaborations}}</strong>
                   </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <div class="callout callout-info">
                     <small class="text-muted">Total <br> Invites</small>
                     <br>
@@ -24,7 +24,7 @@
                   </div>
                 </div>
                 <!--/.col-->
-                <div class="col-sm-2">
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <div class="callout callout-danger">
                     <small class="text-muted">Rejected <br> Invites</small>
                     <br>
@@ -32,7 +32,7 @@
                   </div>
                 </div>
                 <!--/.col-->
-                <div class="col-sm-2">
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <div class="callout callout-warning">
                     <small class="text-muted">Accepted <br> Invites</small>
                     <br>
@@ -40,7 +40,7 @@
                   </div>
                 </div>
                 <!--/.col-->
-                <div class="col-sm-2">
+                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <div class="callout callout-warning">
                     <small class="text-muted">Pending <br> Invites</small>
                     <br>
@@ -52,9 +52,9 @@
               <!--/.row-->
               <hr class="mt-0">
               <br><br>
-              <div class="card">
+              <div class="card d-none d-sm-block">
                 <div class="card-header">
-                  <h3 style="margin-left: 35%;">Project Invitation Overview</h3>
+                  <h3 style="text-align: center;">Project Invitation Overview</h3>
                 </div>
                 <div class="card-body">
                   <div class="chart-wrapper">
@@ -65,12 +65,12 @@
                 </div>
               </div>
               <div class="progress-group mb-4">
-                <div class="progress-group-prepend">
+                <div class="progress-group-prepend d-none d-sm-block">
                   <span class="progress-group-text" style="height: 25px; font-size: medium;">
                     Total Projects <br />Total Invites <br /> Accepted&nbsp;Invites <br /> Rejected&nbsp;Invites <br />Panding Invites
                   </span>
                 </div>
-                <div class="progress-group-bars" style="margin-left: 5%;">
+                <div class="progress-group-bars d-none d-sm-block " style="margin-left: 5%;">
                   <div class="progress progress-md" style="height: 25px;">
                     <div class="progress-bar bg-green" role="progressbar" [style.width]="totalCollaborations + '%'"
                       aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
@@ -98,7 +98,7 @@
           </div>
           <!--/.row-->
           <br><br><br>
-          <div class="row" style="float: right; margin-bottom: -3%; margin-right: -1%;">
+          <div class="row" style="float: right; margin-bottom: -2%; margin-right: -1%;">
             <div>
               <div class="progress-group">
                 <div class="form-group col-sm-12">
@@ -118,21 +118,21 @@
               </div>
             </div>
           </div>
-          <table class="table table-responsive-sm table-hover table-outline mb-0">
+          <div class="table-responsive">
+          <table class="table table-hover table-bordered align-middle text-center table-outline">
             <thead class="thead-light">
               <tr>
                 <th class="text-center"><i class="icon-people"></i></th>
                 <th>Team Name</th>
                 <th>Description</th>
-                <th>View Members</th>
+                <!-- <th>View Members</th> -->
               </tr>
             </thead>
             <tbody *ngIf="membersArr.length == 0">
               <tr style="font-size: xx-large;">
-                <td></td>
-                <td></td>
-                <h2 style="margin-left: 10%;">No record Found</h2>
-                <td></td>
+                <td colspan="6">
+                  <h2 style="text-align: center;">No record Found</h2>
+                </td>
               </tr>
             </tbody>
             <tbody *ngIf="membersArr.length > 0">
@@ -149,12 +149,13 @@
                 <td>
                   <div>{{obj.description}}</div>
                 </td>
-                <td>
+                <!-- <td>
                   <button class="btn btn-success">View Members</button>
-                </td>
+                </td> -->
               </tr>
             </tbody>
           </table>
+        </div>
         </div>
       </div>
     </div>
