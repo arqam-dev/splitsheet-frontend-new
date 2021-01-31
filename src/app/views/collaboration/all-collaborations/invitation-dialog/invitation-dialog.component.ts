@@ -39,8 +39,8 @@ export class InvitationDialog implements OnInit {
     private dialogRef: MatDialogRef<InvitationDialog>
   ) {
     if (data) {
-      console.log("data in add-quantity-dialog");
-      console.log(data);
+      // console.log("data in add-quantity-dialog");
+      // console.log(data);
 
       this.message = data.message || this.message;
       this.dialogData = data.dialogData;
@@ -66,17 +66,17 @@ export class InvitationDialog implements OnInit {
   resObj;
   teams;
   getPercentageAndTeam(project_id) {
-    console.log('getPercentageAndTeam called...!');
+    // console.log('getPercentageAndTeam called...!');
 
     let getPercentageAndTeamURL = this._url + `projects/remaining-percentage/?project_id=` + project_id;
 
     this.http.get(getPercentageAndTeamURL)
       .toPromise()
       .then(res => {
-        console.log('then of getPercentageAndTeam api');
+        // console.log('then of getPercentageAndTeam api');
         this.resObj = res;
 
-        console.log(this.resObj);
+        // console.log(this.resObj);
         this.resObj = this.resObj.data.items[0];
         this.teams = this.resObj.teams;
         this.min = this.resObj.min;
@@ -89,16 +89,13 @@ export class InvitationDialog implements OnInit {
   }
 
   invite(email, percentage) {
-    console.log("invite called");
+    // console.log("invite called");
 
     let inviteUrl = this._url + 'users/invite';
 
     const collaboration_id = localStorage.getItem('collaboration_id');
     const collaboration_name = localStorage.getItem('collaboration_name');
     const user_name = localStorage.getItem('user_name');
-
-    console.log('user_name: ' + user_name);
-    console.log('collaboration_name: ' + collaboration_name);
 
     // email, team_id, project_id, percentage
 
@@ -114,8 +111,8 @@ export class InvitationDialog implements OnInit {
       .post(inviteUrl, data)
       .toPromise()
       .then((data: any) => {
-        console.log("Success of invitation");
-        console.log(data);
+        // console.log("Success of invitation");
+        // console.log(data);
         this.inviteRes = data;
         alert('Invitation sent successfully!');
         this.cancel();

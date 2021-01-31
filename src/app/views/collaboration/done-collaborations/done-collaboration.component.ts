@@ -25,12 +25,12 @@ export class DoneCollaborationComponent implements OnInit {
     this.http.get(this.collaborationUrl)
       .toPromise()
       .then(res => {
-        console.log('then of api');
-        console.log(res);
+        // console.log('then of api');
+        // console.log(res);
         this.userObjTemp = res;
         if (this.userObjTemp != undefined) {
           // this.userObj = this.userObjTemp;
-          console.log('this.userObj.code::' + this.userObjTemp.code)
+          // console.log('this.userObj.code::' + this.userObjTemp.code)
           this.userObj = this.userObjTemp.data.items[0].projects;
         }
       })

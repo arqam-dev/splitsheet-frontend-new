@@ -21,8 +21,8 @@ export class RegisterComponent implements OnInit {
 
   onClickSubmit(data) {
     this.submitted = true;
-    console.log("enter in submit");
-    console.log(data);
+    // console.log("enter in submit");
+    // console.log(data);
 
     if (this.registrationForm.invalid) {
       return;
@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     //   console.log("form data is required");
     // }
     else if (data.password !== data.confirmPassword) {
-      console.log("password are not matched");
+      // console.log("password are not matched");
     }
     else {
       this.userData = {
@@ -42,19 +42,19 @@ export class RegisterComponent implements OnInit {
         phoneNo: data.phoneNo,
         password: data.password,
       }
-      console.log("form submited");
-      console.log(this.userData);
-      console.log(this._registrationURL)
+      // console.log("form submited");
+      // console.log(this.userData);
+      // console.log(this._registrationURL)
       this.http.post(this._registrationURL, this.userData)
         .toPromise()
         .then(response => {
-          console.log("data submitted");
-          console.log(response);
+          // console.log("data submitted");
+          // console.log(response);
           this.router.navigate(['/login']);
         })
         .catch((err: HttpErrorResponse) => {
-          console.log("error occuer");
-          console.log(err.status);
+          // console.log("error occuer");
+          // console.log(err.status);
         });
     }
   }

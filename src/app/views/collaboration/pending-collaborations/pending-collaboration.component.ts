@@ -28,7 +28,6 @@ export class PendingCollaborationComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router, public dialog: MatDialog) { }
 
   rejectionReason(reason) {
-    console.log("rejectionReason called");
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -53,12 +52,9 @@ export class PendingCollaborationComponent implements OnInit {
     this.http.get(collaborationUrl)
       .toPromise()
       .then(res => {
-        console.log('then of api');
-        console.log(res);
         this.userObjTemp = res;
         if (this.userObjTemp != undefined) {
           // this.userObj = this.userObjTemp;
-          console.log('this.userObj.code::' + this.userObjTemp.code)
           this.userObj = this.userObjTemp.data.items[0].projects;
         }
       })
@@ -69,7 +65,6 @@ export class PendingCollaborationComponent implements OnInit {
   }
 
   acceptCollaboration(collaboration_id) {
-    console.log('acceptCollaboration called!');
 
     let collaborationObj = {
       user_id: this.user_id,
@@ -81,8 +76,6 @@ export class PendingCollaborationComponent implements OnInit {
     this.http.post(collaborationUrl, collaborationObj)
       .toPromise()
       .then(res => {
-        console.log('then of api accepted');
-        console.log(res);
         // if (this.userObj.code == 200) {
         alert('Accepted collaboration successfully');
         window.location.reload();
@@ -100,7 +93,6 @@ export class PendingCollaborationComponent implements OnInit {
   }
 
   rejectCollaboration(collaboration_id) {
-    console.log('rejectCollaboration called!');
 
     localStorage.setItem('collaboration_id', collaboration_id);
 

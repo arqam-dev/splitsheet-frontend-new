@@ -32,8 +32,8 @@ export class AboutUserComponent implements OnInit {
 
   password;
   onChangePassword(e){
-    console.log('onChangePassword called');
-    console.log(e.target.value);
+    // console.log('onChangePassword called');
+    // console.log(e.target.value);
     this.password = e.target.value;
   }
 
@@ -51,8 +51,6 @@ export class AboutUserComponent implements OnInit {
     .post(updateProfileUrl, obj)
     .toPromise()
     .then(res => {
-      console.log('then of profile api');
-      console.log(res);
       this.userObj = res;
       this.userObj = this.userObj.data.items;
     })
@@ -67,12 +65,9 @@ export class AboutUserComponent implements OnInit {
 
   userObj;
   ngOnInit(): void {
-    console.log(this.profileUrl);
     this.http.get(this.profileUrl)
       .toPromise()
       .then(res => {
-        console.log('then of profile api');
-        console.log(res);
         this.userObj = res;
         this.userObj = this.userObj.data.items;
       })

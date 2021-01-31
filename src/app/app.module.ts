@@ -22,13 +22,8 @@ import { P404Component } from "./views/error/404.component";
 import { P500Component } from "./views/error/500.component";
 import { LoginComponent } from "./views/login/login.component";
 import { RegisterComponent } from "./views/register/register.component";
-import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
 const _url:string = '';
-const config: SocketIoConfig = {
-  url: 'http//192.168.0.106',
-  options: {}
-};
 
 const APP_CONTAINERS = [DefaultLayoutComponent];
 
@@ -116,7 +111,6 @@ import {
     MatSidenavModule,
     MatTableModule,
     MatSelectModule,
-    SocketIoModule.forRoot(config),
     
     // AngularMaterialModule
   ],

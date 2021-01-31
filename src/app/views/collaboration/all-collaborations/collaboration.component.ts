@@ -58,8 +58,8 @@ export class CollaborationComponent implements OnInit {
   // }
 
   async invite(id, name) {
-    console.log("invite called");
-    console.log("id: " + id);
+    // console.log("invite called");
+    // console.log("id: " + id);
     localStorage.setItem("collaboration_id", id);
     localStorage.setItem("collaboration_name", name);
 
@@ -89,8 +89,6 @@ export class CollaborationComponent implements OnInit {
   }
 
   addTeam(id, name) {
-    console.log("invite called");
-    console.log("id: " + id);
     localStorage.setItem("project_id_for_adding_team", id);
 
     const dialogConfig = new MatDialogConfig();
@@ -119,11 +117,9 @@ export class CollaborationComponent implements OnInit {
     this.http.get(this.collaborationUrl)
       .toPromise()
       .then(res => {
-        console.log('then of api');
-
         this.userObjTemp = res;
         if (this.userObjTemp != undefined) {
-          console.log(this.userObjTemp.data.items[0]);
+          // console.log(this.userObjTemp.data.items[0]);
           this.userObj = this.userObjTemp.data.items;
         }
       })

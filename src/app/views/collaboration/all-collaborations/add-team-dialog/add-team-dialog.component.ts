@@ -38,8 +38,8 @@ export class AddTeamDialog implements OnInit {
     private dialogRef: MatDialogRef<AddTeamDialog>
   ) {
     if (data) {
-      console.log("data in add-quantity-dialog");
-      console.log(data);
+      // console.log("data in add-quantity-dialog");
+      // console.log(data);
 
       this.message = data.message || this.message;
       this.dialogData = data.dialogData;
@@ -58,7 +58,7 @@ export class AddTeamDialog implements OnInit {
   inviteRes;
 
   addTeam(name, description) {
-    console.log("Add Team called");
+    // console.log("Add Team called");
 
     let addTeamUrl = this._url + 'team';
 
@@ -74,8 +74,8 @@ export class AddTeamDialog implements OnInit {
       .post(addTeamUrl, data)
       .toPromise()
       .then((data: any) => {
-        console.log("Success added tge team");
-        console.log(data);
+        // console.log("Success added tge team");
+        // console.log(data);
         this.inviteRes = data;
         alert('New Team has been added!');
         this.cancel();

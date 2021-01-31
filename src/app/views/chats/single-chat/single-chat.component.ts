@@ -2,18 +2,11 @@ import { Component, OnInit, AfterViewChecked, ElementRef, ViewChild } from '@ang
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { WebSocketService } from '../web-socket.service';
 import { NotifierService } from 'angular-notifier';
 import { LoopBackConfig } from '../../service/lb.config';
 
 @Injectable()
 
-@Component({
-  selector: 'app-single-chat',
-  templateUrl: './single-chat.component.html',
-  styleUrls: ['./single-chat.component.css'],
-  providers: [WebSocketService]
-})
 export class SingleChatComponent implements OnInit {
   currentUserMsg:any = [];
   replyForm: FormGroup;
@@ -24,7 +17,6 @@ export class SingleChatComponent implements OnInit {
   senderId;
   userId;
   msges:any;
-  socket: SocketIOClient.Socket;
   userList:any =[];
   container;
   
@@ -34,26 +26,10 @@ export class SingleChatComponent implements OnInit {
   
   constructor(private _fromBuilder:FormBuilder,
     private http : HttpClient,
-    private webSocketService: WebSocketService,
     notifierService: NotifierService) {
       
       this.notifier = notifierService;
       
-      this.webSocketService.listen("chatMessageEmitter").subscribe(
-        (data) =>{
-          console.log('web socket listen');
-          console.log(data);
-          this.notifier.notify("success","You Received a msg");
-          let obj: any = data;
-          let tempData = {
-            senderId: obj.customUserId,
-            receiverId: obj.receiverId,
-            msg: obj.text
-        };
-        this.currentUserMsg.push(tempData); 
-          
-      }
-      );
     }
 
 
@@ -136,7 +112,6 @@ export class SingleChatComponent implements OnInit {
         customUserId: data.senderId
       }
       console.log(obj);
-      this.webSocketService.emit("chatMessage", obj);
       
     }
   }

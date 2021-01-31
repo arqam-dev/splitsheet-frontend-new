@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormControl, FormGroup, Validators, NgForm } from "@angular/forms";
-import { Socket } from 'ngx-socket-io';
+
 import {
   HttpClient,
   HttpErrorResponse,
@@ -25,11 +25,11 @@ export class LoginComponent implements OnInit {
   loginUrl = this._url + `v1/users/login`;
 
   constructor(private http: HttpClient, private router: Router, private auth: AuthService,
-    private socket: Socket
+    
   ) { }
   ngOnInit() { }
   onSubmit(user: NgForm) {
-    console.log('submit called...!');
+    // console.log('submit called...!');
 
     let loginObj = {
       email: user.value.email,
@@ -39,16 +39,16 @@ export class LoginComponent implements OnInit {
     this.http.post(this.loginUrl, loginObj)
       .toPromise()
       .then(res => {
-        console.log('then of api');
+        // console.log('then of api');
         this.auth.loggIn();
         this.userObj = res;
-        console.log('this.userObj', this.userObj);
-        console.log('this.userObj.code::' + this.userObj.code)
+        // console.log('this.userObj', this.userObj);
+        // console.log('this.userObj.code::' + this.userObj.code)
         if (this.userObj.code != 200) {
           alert('Invalid Credentials!')
           return;
         };
-        console.log('userId: ' + this.userObj.data.items[0].id);
+        // console.log('userId: ' + this.userObj.data.items[0].id);
 
         localStorage.setItem("userId", this.userObj.data.items[0].id);
         localStorage.setItem("user_name", this.userObj.data.items[0].user_name);
@@ -56,8 +56,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       })
       .catch((err: HttpErrorResponse) => {
-        console.log("error occuer");
-        console.log(err.status);
+        // console.log("error occuer");
+        // console.log(err.status);
       });
 
   }

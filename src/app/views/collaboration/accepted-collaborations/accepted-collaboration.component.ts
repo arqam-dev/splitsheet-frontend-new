@@ -25,8 +25,6 @@ export class AcceptedCollaborationComponent implements OnInit {
 
   markDoneRes;
   markDone(project_id) {
-    console.log('project_id');
-    console.log(project_id);
 
     let markDoneURL = this._url + 'v1/projects/mark-as-done';
 
@@ -38,7 +36,6 @@ export class AcceptedCollaborationComponent implements OnInit {
     this.http.post(markDoneURL, data)
       .toPromise()
       .then(res => {
-        console.log('then of this getMembersAgainstCollaboration api');
         // this.markDoneRes = new Array(res);
         // this.markDoneRes = this.markDoneRes[0].data.items;
         alert('Successfully marked the project as done!');
@@ -51,15 +48,11 @@ export class AcceptedCollaborationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.collaborationUrl);
     this.http.get(this.collaborationUrl)
       .toPromise()
       .then(res => {
-        console.log('then of accepted api');
-        console.log(res);
         this.userObjTemp = res;
         if (this.userObjTemp != undefined) {
-          console.log('this.userObj.code::' + this.userObjTemp.code)
           this.userObj = this.userObjTemp.data.items[0].projects;
         }
       })

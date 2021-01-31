@@ -24,11 +24,9 @@ export class AddCollaborationComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
   ngOnInit() { }
   onSubmit(user: NgForm) {
-    console.log('submit called...!');
 
     let user_id = localStorage.getItem('userId');
 
-    console.log('user_id: ' + user_id);
     let collaborationObj = {
       name: user.value.name,
       started_at: new Date(user.value.started_at),
@@ -41,9 +39,7 @@ export class AddCollaborationComponent implements OnInit {
     this.http.post(this.collaborationUrl, collaborationObj)
       .toPromise()
       .then(res => {
-        console.log('then of api');
         this.userObj = res;
-        console.log('this.userObj.code::' + this.userObj.code)
         // if (this.userObj.code != 200) {
         //   alert('Something went wrong!')
         //   return;

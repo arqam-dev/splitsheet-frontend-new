@@ -42,11 +42,11 @@ export class DashboardComponent implements OnInit {
 
   // events
   public chartClicked(e: any): void {
-    console.log(e);
+    // console.log(e);
   }
 
   public chartHovered(e: any): void {
-    console.log(e);
+    // console.log(e);
   }
   // // // // // 
 
@@ -72,8 +72,7 @@ export class DashboardComponent implements OnInit {
     this.http.get(dashboardUrl)
       .toPromise()
       .then(res => {
-        console.log('then of dashboard api');
-        console.log(res);
+        // console.log('then of dashboard api');
         this.dashbordRes = res;
         this.totalCollaborations = this.dashbordRes.data.items[0].total_projects;
         this.totalCollaborationsCount = this.dashbordRes.data.items[0].total_invites;
@@ -110,7 +109,7 @@ export class DashboardComponent implements OnInit {
     this.http.get(collaborationUrl)
       .toPromise()
       .then(res => {
-        console.log('then of api');
+        // console.log('then of api');
         this.collaborationsArr = new Array(res);
         this.collaborationsArr = this.collaborationsArr[0].data.items;
       })
@@ -123,13 +122,10 @@ export class DashboardComponent implements OnInit {
   getMembersAgainstCollaboration(project_id) {
     let projectUrl = this._url + 'v1/team/teams-against-project/?project_id=' + project_id;
 
-    console.log('project_id');
-    console.log(project_id);
-
     this.http.get(projectUrl)
       .toPromise()
       .then(res => {
-        console.log('then of this getMembersAgainstCollaboration api');
+        // console.log('then of this getMembersAgainstCollaboration api');
         this.membersArr = new Array(res);
         this.membersArr = this.membersArr[0].data.items;
       })
@@ -153,8 +149,8 @@ export class DashboardComponent implements OnInit {
     await this.getDashboardItems(this.user_id);
     await this.getAllCollaborations(this.user_id);
     await this.waitForOneSecond();
-    console.log('this.collaborationsArr');
-    console.log(this.collaborationsArr);
+    // console.log('this.collaborationsArr');
+    // console.log(this.collaborationsArr);
     let defaultCollaborationId = this.collaborationsArr[0].id;
     this.defaultCollaborationName = this.collaborationsArr[0].name;
     this.getMembersAgainstCollaboration(defaultCollaborationId);
