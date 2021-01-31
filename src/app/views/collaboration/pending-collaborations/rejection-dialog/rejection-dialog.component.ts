@@ -42,8 +42,8 @@ export class RejectionDialog implements OnInit {
     private dialogRef: MatDialogRef<RejectionDialog>
   ) {
     if (data) {
-      console.log("data in add-quantity-dialog");
-      console.log(data);
+      // console.log("data in add-quantity-dialog");
+      // console.log(data);
 
       this.message = data.message || this.message;
       this.dialogData = data.dialogData;
@@ -80,7 +80,7 @@ export class RejectionDialog implements OnInit {
     localStorage.setItem('isRejected', 'true');
     localStorage.setItem('rejectionReason', rejectionObj.value.reason);
 
-    console.log('rejectionObj.value.reason: ' + rejectionObj.value.reason)
+    // console.log('rejectionObj.value.reason: ' + rejectionObj.value.reason)
 
     let collaborationObj = {
       user_id: this.user_id,
@@ -93,15 +93,15 @@ export class RejectionDialog implements OnInit {
     this.http.post(collaborationUrl, collaborationObj)
       .toPromise()
       .then(res => {
-        console.log('then of api');
+        // console.log('then of api');
         // if (this.userObj.code == 200) {
         alert('Rejected collaboration successfully');
         this.dialog.closeAll();
         window.location.reload();
       })
       .catch((err: HttpErrorResponse) => {
-        console.log("error occuer");
-        console.log(err.status);
+        // console.log("error occuer");
+        // console.log(err.status);
         return;
       });
 

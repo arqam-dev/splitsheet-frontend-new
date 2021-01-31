@@ -17,7 +17,7 @@ export class DefaultLayoutComponent {
 
   logout()
   {
-    console.log('logout func called');
+    // console.log('logout func called');
     this.auth.logout();
     this.router.navigate(['/login']);
   }  

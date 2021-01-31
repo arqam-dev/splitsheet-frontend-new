@@ -32,8 +32,8 @@ export class RejectedCollaborationComponent implements OnInit {
         }
       })
       .catch((err: HttpErrorResponse) => {
-        console.log("error occuer");
-        console.log(err.status);
+        // console.log("error occuer");
+        // console.log(err.status);
       });
   }
 }

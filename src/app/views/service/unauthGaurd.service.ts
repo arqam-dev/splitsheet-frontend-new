@@ -15,7 +15,7 @@ export class UnauthGuard implements CanActivate{
           .then(
               (authuntecated:boolean)=>{
                   if(authuntecated===true){
-                      console.log(authuntecated)
+                      // console.log(authuntecated)
                     this.router.navigate(['/'])
                   }
                   else{

@@ -5,7 +5,7 @@ export class AuthService{
   Authuntecate(){
       const promise=new Promise(
           (resolve, reject)=>{
-            console.log(localStorage.getItem('login'))
+            // console.log(localStorage.getItem('login'))
             if(localStorage.getItem('login')=='true')
             {
               resolve (true);
@@ -20,12 +20,12 @@ export class AuthService{
      return promise;
   }
   loggIn(){
-      console.log("Login service is called")
+      // console.log("Login service is called")
       localStorage.setItem('login','true');
       this.loggedIn=true;
   }
   logout(){
-    console.log('logout called...!')
+    // console.log('logout called...!')
       this.loggedIn=false;
       localStorage.removeItem('login');
   }

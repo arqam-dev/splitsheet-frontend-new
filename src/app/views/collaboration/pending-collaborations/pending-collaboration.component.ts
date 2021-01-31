@@ -59,8 +59,8 @@ export class PendingCollaborationComponent implements OnInit {
         }
       })
       .catch((err: HttpErrorResponse) => {
-        console.log("error occuer");
-        console.log(err.status);
+        // console.log("error occuer");
+        // console.log(err.status);
       });
   }
 
@@ -86,8 +86,8 @@ export class PendingCollaborationComponent implements OnInit {
         // }
       })
       .catch((err: HttpErrorResponse) => {
-        console.log("error occuer");
-        console.log(err.status);
+        // console.log("error occuer");
+        // console.log(err.status);
         return;
       });
   }

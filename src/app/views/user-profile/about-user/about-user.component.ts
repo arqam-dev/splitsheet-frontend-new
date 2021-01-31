@@ -55,8 +55,8 @@ export class AboutUserComponent implements OnInit {
       this.userObj = this.userObj.data.items;
     })
     .catch((err: HttpErrorResponse) => {
-      console.log("error occuer in profile");
-      console.log(err.status);
+      // console.log("error occuer in profile");
+      // console.log(err.status);
     });
 
     alert('Updated profile info successfully!');
@@ -72,8 +72,8 @@ export class AboutUserComponent implements OnInit {
         this.userObj = this.userObj.data.items;
       })
       .catch((err: HttpErrorResponse) => {
-        console.log("error occuer in profile");
-        console.log(err.status);
+        // console.log("error occuer in profile");
+        // console.log(err.status);
       });
   }
 

@@ -99,8 +99,8 @@ export class DashboardComponent implements OnInit {
 
       })
       .catch((err: HttpErrorResponse) => {
-        console.log("error occuer in dashboard");
-        console.log(err);
+        // console.log("error occuer in dashboard");
+        // console.log(err);
       });
   }
 
